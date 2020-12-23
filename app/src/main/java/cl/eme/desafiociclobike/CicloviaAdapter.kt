@@ -16,7 +16,6 @@ class CicloviaAdapter: RecyclerView.Adapter<CicloviaAdapter.VH>() {
     var listaCiclovias = cicloviasSetUp.getCiclovias()
 
     class VH(val binding: ItemListBikeBinding) : RecyclerView.ViewHolder(binding.root) {
-        //Cambiar por binding
 
         fun bind(lC: Ciclovia) {
             binding.tvCicloVia.text = lC.nombre
@@ -41,9 +40,9 @@ class CicloviaAdapter: RecyclerView.Adapter<CicloviaAdapter.VH>() {
         return listaCiclovias.size
     }
 
-    fun updateAdapterFilter(){
+    fun updateAdapterFilter(comuna : String){
         listaCiclovias.clear()
-        listaCiclovias=cicloviasSetUp.getListaFiltrada()
+        listaCiclovias=cicloviasSetUp.getListaFiltrada(comuna)
         notifyDataSetChanged()
     }
     fun updateAdapterNoFilter(){

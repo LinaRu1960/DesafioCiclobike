@@ -28,24 +28,33 @@ class SetupCiclovias {
             "Ñuñoa",
             "Macul",
             "Providencia")
+
     fun getCiclovias(): MutableList<Ciclovia> {
-        var lista: MutableList<Ciclovia> = ArrayList<Ciclovia>()
+        comunas.toSet()
+        var lista: MutableList<Ciclovia> = ArrayList()
         for (i in 0..9) {
             var ciclovia = Ciclovia(nombres[i], comunas[i])
             lista.add(ciclovia)
         }
         return lista
     }
-    fun getListaFiltrada(): MutableList<Ciclovia> {
+    fun getListaFiltrada(pComuna: String): MutableList<Ciclovia> {
 
         var lista: MutableList<Ciclovia> = ArrayList()
         for (i in 0..9) {
             var ciclovia = Ciclovia(nombres[i], comunas[i])
             when(ciclovia.comuna){
-                "Las Condes"->lista.add(ciclovia)
+                pComuna->lista.add(ciclovia)
             }
 
         }
         return lista
+    }
+    fun getListaSpinner():List<String>{
+        val listaSpinner= mutableListOf<String>()
+        listaSpinner.add("Mostrar todo")
+        listaSpinner.addAll(comunas.toSet())
+
+        return listaSpinner
     }
 }
