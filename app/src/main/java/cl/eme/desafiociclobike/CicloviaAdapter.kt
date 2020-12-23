@@ -22,22 +22,19 @@ class CicloviaAdapter: RecyclerView.Adapter<CicloviaAdapter.VH>() {
             binding.tvCicloVia.text = lC.nombre
             binding.tvComuna.text = lC.comuna
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
 
         val binding= ItemListBikeBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         val view =binding.root
-        return VH(view)
-
+        return VH(binding)
     }
 
     override fun onBindViewHolder(holder: VH, position: Int) {
 
         val lC = listaCiclovias.get(position)
         holder.bind(lC)
-
     }
 
     override fun getItemCount(): Int {
